@@ -1,0 +1,121 @@
+
+type = string-attribute
+name = HISTORY_NOTE
+count = 1198
+'[rkuplicki@compute04.laureateinstitute.org: Mon Feb  5 14:18:38 2018] 3dresample -rmode NN -master stats.AC820-T0-__IA.scaled+tlrc. -inset BNA_MPM_thr25_1.25mm.nii.gz -prefix BNA_MPM_thr25_1.25mm-resampled+tlrc\n[rkuplicki@compute02.laureateinstitute.org: Mon Feb  5 14:31:36 2018] 3drefit -space MNI BNA_MPM_thr25_1.25mm-resampled+tlrc.\n[jonas@L2154: Fri May  1 12:04:27 2020] {AFNI_20.1.01:linux_ubuntu_16_64} 3dcalc -prefix jonas_analysis_mask -a BNA_MPM_thr25_1.25mm-resampled+tlrc. -expr '1*amongst(a, 41, 42, 45, 46, 47, 48, 49, 50, 187, 188)+2*amongst(a, 1, 2, 11, 12)+3*amongst(a, 175, 176, 181, 182, 154, 153)+4*amongst(a, 165, 166, 167, 168)+5*amongst(a, 163, 164, 171, 172, 173, 174, 169, 170)+6*amongst(a, 179, 180, 183, 184)+7*amongst(a, 211, 212, 213, 214)+8*amongst(a, 69, 70)+9*amongst(a, 15, 16, 17, 18, 25, 26, 23, 24, 3, 4)'\n[jonas@L2154: Fri May  1 12:11:46 2020] {AFNI_20.1.01:linux_ubuntu_16_64} 3dresample -master /media/cephfs/labs/skhalsa/Data/Iso_version_3.0/Jonas_Steinhauser/iso3_rs_results/AA343/scan_20190905/afniproc/AA343-scan_20190905.results/errts.AA343-scan_20190905.fanaticor-interp+tlrc. -prefix jonas_analysis_mask_resampled -input jonas_analysis_mask+tlrc.~
+
+type = string-attribute
+name = TYPESTRING
+count = 15
+'3DIM_HEAD_ANAT~
+
+type = string-attribute
+name = IDCODE_STRING
+count = 27
+'AFN_6KzO2MXtSvlGL8HifXaj0A~
+
+type = string-attribute
+name = IDCODE_DATE
+count = 25
+'Fri May  1 12:11:45 2020~
+
+type = integer-attribute
+name = SCENE_DATA
+count = 8
+ 2 2 0 -999 -999
+ -999 -999 -999
+
+type = string-attribute
+name = LABEL_1
+count = 5
+'zyxt~
+
+type = string-attribute
+name = LABEL_2
+count = 5
+'zyxt~
+
+type = string-attribute
+name = DATASET_NAME
+count = 5
+'zyxt~
+
+type = integer-attribute
+name = ORIENT_SPECIFIC
+count = 3
+ 1 2 4
+
+type  = float-attribute
+name  = ORIGIN
+count = 3
+         95.375         131.75        -77.375
+
+type  = float-attribute
+name  = DELTA
+count = 3
+          -1.75          -1.75           1.75
+
+type  = float-attribute
+name  = IJK_TO_DICOM
+count = 12
+          -1.75              0              0         95.375              0
+          -1.75              0         131.75              0              0
+           1.75        -77.375
+
+type  = float-attribute
+name  = IJK_TO_DICOM_REAL
+count = 12
+          -1.75              0              0         95.375              0
+          -1.75              0         131.75              0              0
+           1.75        -77.375
+
+type  = float-attribute
+name  = BRICK_STATS
+count = 2
+              0              9
+
+type = integer-attribute
+name = DATASET_RANK
+count = 8
+ 3 1 0 0 0
+ 0 0 0
+
+type = integer-attribute
+name = DATASET_DIMENSIONS
+count = 5
+ 110 131 110 0 0
+
+type = integer-attribute
+name = BRICK_TYPES
+count = 1
+ 3
+
+type  = float-attribute
+name  = BRICK_FLOAT_FACS
+count = 1
+              0
+
+type = string-attribute
+name = BRICK_LABS
+count = 3
+'#0~
+
+type = string-attribute
+name = BRICK_KEYWORDS
+count = 1
+'~
+
+type = string-attribute
+name = TEMPLATE_SPACE
+count = 4
+'MNI~
+
+type = integer-attribute
+name = INT_CMAP
+count = 1
+ 0
+
+type = string-attribute
+name = BYTEORDER_STRING
+count = 10
+'LSB_FIRST~
