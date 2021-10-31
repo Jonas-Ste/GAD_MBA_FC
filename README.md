@@ -16,8 +16,8 @@ The first script "NHST_test_apriori_hypotheses.R" tests a-priori defined hypothe
 
 ## 03_MBA_analysis
 This folder contains all files necessary to re-run the Bayesian Multilevel model. Please note that an up-to-date installation of AFNI is needed in order for the scripts to run.
-Please refer to the [help file of the AFNI MBA function](https://afni.nimh.nih.gov/pub/dist/doc/program_help/MBA.html) on how to set-up MBA correctly.
-Then use the "prepare_MBA_analysis.R" script to produce the input file to MBA in the correct structure. For convenience, the generated input file ("MBA_input_full.txt" is included in the folder but can also be reproduced by running the script. 
+Please refer to the [help file of the AFNI MBA function](https://afni.nimh.nih.gov/pub/dist/doc/program_help/MBA.html) on how to set-up AFNI and MBA correctly.
+Then use the "prepare_MBA_analysis.R" script to produce the input file to MBA in the correct structure. For convenience, the generated input file ("MBA_input_full.txt" is included in the folder but can also be reproduced by running the script. The file "ROIlist.txt" contains the names for the ROIs as they will appear in the output of the MBA function.
 Lastly, the file "run_MBA_full.txt" contains the AFNI command to call the MBA function with the correct model and the data-table produced by the script above. 
 This can be executed by running the following command in your console:
 ```
