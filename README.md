@@ -13,6 +13,7 @@ This script produces the demographical table describing the study sample. Furthe
 
 ## 02_NHST_analysis
 The first script "NHST_test_apriori_hypotheses.R" tests a-priori defined hypotheses of functional correlativity between ROIs as described in the [pre-registration of this study](https://osf.io/j29qv). The second script "correlation_clinical_variables.R" produces the table with correlations between the vmPFC-PMI z-score and clinical variables that is included in the supplementary material.
+The third script "create_raincloudplot_Figure1.R" recreates Panel B of Figure 1, the raincloud plots of the vmPFC-PMI z-scores for each group individually.
 
 ## 03_MBA_analysis
 This folder contains all files necessary to re-run the Bayesian Multilevel model. Please note that an up-to-date installation of AFNI is needed in order for the scripts to run.
