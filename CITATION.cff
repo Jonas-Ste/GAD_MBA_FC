@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "This repository contains data and analysis scripts for Analysis Scripts and Data for Steinhäuser et al. "Functional dissection of neural connectivity in generalized anxiety disorder using Bayesian and frequentist inference" "
+message: "This repository contains data and analysis scripts for Analysis Scripts and Data for Steinhäuser et al. 'Functional dissection of neural connectivity in generalized anxiety disorder using Bayesian and frequentist inference' "
 authors:
   - family-names: "Steinhäuser"
     given-names: "Jonas L."
