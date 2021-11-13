@@ -4,7 +4,7 @@ authors:
   - family-names: "Steinhäuser"
     given-names: "Jonas L."
     orcid: "https://orcid.org/0000-0001-5726-0928"
-title: "Steinhäuser et al. - Functional dissection of neural connectivity in generalized anxiety disorder using Bayesian and frequentist inference"
+title: "Data and scripts for: Steinhäuser et al. 'Functional dissection of neural connectivity in generalized anxiety disorder using Bayesian and frequentist inference'"
 version: 1.0.0
 date-released: 2021-11-13
 url: "https://github.com/Jonas-Ste/GAD_MBA_FC"
