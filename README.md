@@ -28,4 +28,4 @@ Please note that the final outputs will not exactly match the results reported i
 
 ## 04_Figures
 The script "create_raincloudplot_Figure1.R" recreates Panel B of Figure 1, the raincloud plots of the vmPFC-PMI z-scores for each group individually.
-The file "Figure1_Illustrator_File.ai" is a project-file for Adobe Illustrator used to create Figure 1 with panels A and B. Please note that Adobe Illustrator, a commercial software, is needed in order to view and edit this file. The "raw_figures"-subfolder contains the raw figures produced from both files/scripts in high-resolution PDF format.
+The file "Figure1_Illustrator_File.ai" is a project-file for Adobe Illustrator used to create Figure 1 with panels A and B. Please note that Adobe Illustrator, a commercial software, is needed in order to view and edit this file. The file "Figure3_CONSORT_diagram.pptx" recreates the CONSORT diagram of the study. The "raw_figures"-subfolder contains the raw figures produced from both files/scripts in high-resolution PDF format. Since Figure2 is created in the process of running the MBA analysis (see 03_MBA_analysis) it is not included here. 
