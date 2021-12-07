@@ -48,17 +48,40 @@ df.demographics %>%
 
 # test group differences for demographic variables in the order they appear in the demographics table
 t.test(Age ~ Group, data = df.demographics)
+mean(subset(df.demographics, Group == "HC")$Age) - mean(subset(df.demographics, Group == "MA")$Age)
+
 t.test(BMI ~ Group, data = df.demographics)
+mean(subset(df.demographics, Group == "HC")$BMI) - mean(subset(df.demographics, Group == "MA")$BMI)
+
 t.test(PHQ.9 ~ Group, data = df.demographics)
+mean(subset(df.demographics, Group == "HC")$PHQ.9) - mean(subset(df.demographics, Group == "MA")$PHQ.9)
+
 t.test(OASIS ~ Group, data = df.demographics)
+mean(subset(df.demographics, Group == "HC")$OASIS) - mean(subset(df.demographics, Group == "MA")$OASIS)
+
 t.test(GAD7 ~ Group, data = df.demographics)
+mean(subset(df.demographics, Group == "HC")$GAD7) - mean(subset(df.demographics, Group == "MA")$GAD7)
+
+# omitting NA because STAI date one from HC participant is missing
 t.test(STAI.State ~ Group, data = df.demographics)
+mean(subset(df.demographics, Group == "HC")$STAI.State, na.rm = TRUE) - mean(subset(df.demographics, Group == "MA")$STAI.State)
+
+# omitting NA because STAI date one from HC participant is missing
 t.test(STAI.Trait ~ Group, data = df.demographics)
+mean(subset(df.demographics, Group == "HC")$STAI.Trait, na.rm = TRUE) - mean(subset(df.demographics, Group == "MA")$STAI.Trait)
+
 t.test(ASI.Total ~ Group, data = df.demographics)
+mean(subset(df.demographics, Group == "HC")$ASI.Total) - mean(subset(df.demographics, Group == "MA")$ASI.Total)
+
 t.test(ASI.Physical ~ Group, data = df.demographics)
+mean(subset(df.demographics, Group == "HC")$ASI.Physical) - mean(subset(df.demographics, Group == "MA")$ASI.Physical)
+
 t.test(ASI.Cognitive ~ Group, data = df.demographics)
+mean(subset(df.demographics, Group == "HC")$ASI.Cognitive) - mean(subset(df.demographics, Group == "MA")$ASI.Cognitive)
+
 t.test(ASI.Social ~ Group, data = df.demographics)
-  
+mean(subset(df.demographics, Group == "HC")$ASI.Social) - mean(subset(df.demographics, Group == "MA")$ASI.Social)
+
   
 # compare groups based on average head motion during resting state scan
 df.demographics %>% 
@@ -67,4 +90,16 @@ df.demographics %>%
             standard_error = sd(avg_motion)/sqrt(length(Group)))
 
 # test if groups differ significantly on average head motion
-wilcox.test(avg_motion ~ Group, data = df.demographics)
+# mean and 95% CI of mean average motion in GAD group
+df.demographics %>% 
+  filter(Group == "MA") %>% 
+  {t.test(avg_motion ~ 1, data = .)}
+
+# mean and 95% CI of mean average motion in HC group
+df.demographics %>% 
+  filter(Group == "HC") %>% 
+  {t.test(avg_motion ~ 1, data = .)}
+
+wilcox.test(avg_motion ~ Group, data = df.demographics, conf.int = TRUE, conf.level = 0.95)
+paste0("Difference between group means (average motion): ",
+       mean(subset(df.demographics, Group == "HC")$avg_motion) - mean(subset(df.demographics, Group == "MA")$avg_motion))
