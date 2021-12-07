@@ -40,7 +40,8 @@ df.correlations %>%
          mean_HC = estimate1,
          mean_GAD = estimate2,
          mean_difference = estimate) %>% 
-  relocate(p_adj, .after = p.value)
+  relocate(p_adj, .after = p.value) %>% 
+  relocate(mean_difference, conf.low, conf.high, .after = mean_GAD)
 
 
 
@@ -69,7 +70,8 @@ df.correlations %>%
          mean_HC = estimate1,
          mean_GAD = estimate2,
          mean_difference = estimate) %>% 
-  relocate(p_adj, .after = p.value)
+  relocate(p_adj, .after = p.value) %>% 
+  relocate(mean_difference, conf.low, conf.high, .after = mean_GAD)
 
 
 
@@ -98,7 +100,8 @@ df.correlations %>%
          mean_HC = estimate1,
          mean_GAD = estimate2,
          mean_difference = estimate) %>% 
-  relocate(p_adj, .after = p.value)
+  relocate(p_adj, .after = p.value) %>% 
+  relocate(mean_difference, conf.low, conf.high, .after = mean_GAD)
 
 
 
@@ -127,7 +130,8 @@ df.correlations %>%
          mean_HC = estimate1,
          mean_GAD = estimate2,
          mean_difference = estimate) %>% 
-  relocate(p_adj, .after = p.value)
+  relocate(p_adj, .after = p.value) %>% 
+  relocate(mean_difference, conf.low, conf.high, .after = mean_GAD)
 
 
 
@@ -156,7 +160,8 @@ df.correlations %>%
          mean_HC = estimate1,
          mean_GAD = estimate2,
          mean_difference = estimate) %>% 
-  relocate(p_adj, .after = p.value)
+  relocate(p_adj, .after = p.value) %>% 
+  relocate(mean_difference, conf.low, conf.high, .after = mean_GAD)
 
 
 
@@ -185,7 +190,8 @@ df.correlations %>%
          mean_HC = estimate1,
          mean_GAD = estimate2,
          mean_difference = estimate) %>% 
-  relocate(p_adj, .after = p.value)
+  relocate(p_adj, .after = p.value) %>% 
+  relocate(mean_difference, conf.low, conf.high, .after = mean_GAD)
 
 
 
@@ -214,7 +220,8 @@ df.correlations %>%
          mean_HC = estimate1,
          mean_GAD = estimate2,
          mean_difference = estimate) %>% 
-  relocate(p_adj, .after = p.value)
+  relocate(p_adj, .after = p.value) %>% 
+  relocate(mean_difference, conf.low, conf.high, .after = mean_GAD)
 
 
 
@@ -243,7 +250,8 @@ df.correlations %>%
          mean_HC = estimate1,
          mean_GAD = estimate2,
          mean_difference = estimate) %>% 
-  relocate(p_adj, .after = p.value)
+  relocate(p_adj, .after = p.value) %>% 
+  relocate(mean_difference, conf.low, conf.high, .after = mean_GAD)
 
 
 
@@ -272,7 +280,8 @@ df.correlations %>%
          mean_HC = estimate1,
          mean_GAD = estimate2,
          mean_difference = estimate) %>% 
-  relocate(p_adj, .after = p.value)
+  relocate(p_adj, .after = p.value) %>% 
+  relocate(mean_difference, conf.low, conf.high, .after = mean_GAD)
 
 
 
@@ -301,7 +310,8 @@ df.correlations %>%
          mean_HC = estimate1,
          mean_GAD = estimate2,
          mean_difference = estimate) %>% 
-  relocate(p_adj, .after = p.value)
+  relocate(p_adj, .after = p.value) %>% 
+  relocate(mean_difference, conf.low, conf.high, .after = mean_GAD)
 
 
 
@@ -330,4 +340,5 @@ df.correlations %>%
          mean_HC = estimate1,
          mean_GAD = estimate2,
          mean_difference = estimate) %>% 
-  relocate(p_adj, .after = p.value)
+  relocate(p_adj, .after = p.value) %>% 
+  relocate(mean_difference, conf.low, conf.high, .after = mean_GAD)
