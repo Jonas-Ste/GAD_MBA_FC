@@ -1,4 +1,4 @@
-# Analysis Scripts and Data for Steinhäuser et al. "Functional dissection of neural connectivity in generalized anxiety disorder using Bayesian and frequentist inference"
+# Analysis Scripts and Data for Steinhäuser et al. "Functional dissection of neural connectivity in generalized anxiety disorder"
 Jonas L. Steinhäuser, Adam R. Teed, Obada Al-Zoubi, René Hurlemann, Gang Chen, Sahib S. Khalsa
 
 These datafiles and scripts reproduce the results reported in the main manuscript and supplement.
