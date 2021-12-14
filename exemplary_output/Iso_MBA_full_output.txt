@@ -1,0 +1,431 @@
+===== Summary of variable information =====
+Total number of ROIs: 9
+Response variable Y - mean: 0.448467; SD: 0.303836
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+-0.4548  0.2329  0.4219  0.4485  0.6493  1.6189 
+
+
+Data structure:
+'data.frame':	1980 obs. of  5 variables:
+ $ Subj : Factor w/ 55 levels "AA343","AD421",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ ROI1 : Factor w/ 8 levels "a_ins","amyg",..: 8 8 4 8 4 5 8 4 5 1 ...
+ $ ROI2 : Factor w/ 8 levels "a_ins","amyg",..: 5 6 6 1 1 1 7 7 7 7 ...
+ $ Y    : num  0.492 0.736 0.443 0.34 0.717 ...
+ $ group: Factor w/ 2 levels "HC","MA": 2 2 2 2 2 2 2 2 2 2 ...
+Subjects:
+        AA343         AD421         AG474         AL747         AM140 
+           36            36            36            36            36 
+        AO631         AO851         AP493         AP614         AP624 
+           36            36            36            36            36 
+AP954_ISOonly         AS599 AS935_ISOonly         AT045         AT814 
+           36            36            36            36            36 
+        AT847         AU064         AU602         AU739         AU767 
+           36            36            36            36            36 
+        AV350         AV646 AW442_ISOonly         AW445         AW697 
+           36            36            36            36            36 
+        AW856         AW990         AX005         AX598         AX653 
+           36            36            36            36            36 
+        AX787         AY758         AY848         AZ873         AZ908 
+           36            36            36            36            36 
+        AZ985         BA394         BA977         BB146         BB329 
+           36            36            36            36            36 
+        BB497         BB527         BB818         BB898         BC058 
+           36            36            36            36            36 
+        BC223         BC378         BC380         BC496         BC514 
+           36            36            36            36            36 
+        BC771 BD234_ISOonly         BH100         BH254         BH806 
+           36            36            36            36            36 
+ROIs:
+ a_ins   amyg   dACC  dmPFC    PCC pm_ins     TP  vmPFC 
+   275    110    165    385    330    220     55    440 
+ a_ins   amyg   dACC  dlPFC  dmPFC    PCC pm_ins     TP 
+   165    330    275    440     55    110    220    385 
+
+
+05/13/20 10:46:47.367
+    user   system  elapsed 
+2910.470   31.437 1024.677 
+
+***** Summary information of model results *****
+
+ Family: gaussian 
+  Links: mu = identity; sigma = identity 
+Formula: Y ~ 1 + group + (1 | Subj) + (1 + group | ROI1:ROI2) + (1 + group | mm(ROI1, ROI2, weights = cbind(w, w), scale = FALSE)) 
+   Data: lop$dataTable (Number of observations: 1980) 
+Samples: 4 chains, each with iter = 1000; warmup = 500; thin = 1;
+         total post-warmup samples = 2000
+
+Group-Level Effects: 
+~mmROI1ROI2 (Number of levels: 9) 
+                      Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS
+sd(Intercept)             0.11      0.05     0.01     0.23 1.01      227
+sd(group1)                0.01      0.01     0.00     0.02 1.00      653
+cor(Intercept,group1)     0.31      0.48    -0.74     0.97 1.00      773
+                      Tail_ESS
+sd(Intercept)              159
+sd(group1)                 828
+cor(Intercept,group1)      810
+
+~ROI1:ROI2 (Number of levels: 36) 
+                      Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS
+sd(Intercept)             0.20      0.03     0.16     0.27 1.01      458
+sd(group1)                0.01      0.00     0.00     0.02 1.01      574
+cor(Intercept,group1)    -0.58      0.40    -0.99     0.59 1.00      886
+                      Tail_ESS
+sd(Intercept)              715
+sd(group1)                 503
+cor(Intercept,group1)      811
+
+~Subj (Number of levels: 55) 
+              Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+sd(Intercept)     0.14      0.01     0.11     0.17 1.00      336      701
+
+Population-Level Effects: 
+          Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+Intercept     0.45      0.08     0.29     0.63 1.01      577     1034
+group1        0.05      0.02     0.01     0.09 1.02      201      381
+
+Family Specific Parameters: 
+      Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+sigma     0.15      0.00     0.15     0.15 1.00     3364     1053
+
+Samples were drawn using sampling(NUTS). For each parameter, Bulk_ESS
+and Tail_ESS are effective sample size measures, and Rhat is the potential
+scale reduction factor on split chains (at convergence, Rhat = 1).
+
+
+===== Summary of region pair effects for group =====
+----- group level: HC
+***** 36 region pairs based on 1-sided 90% uncertainty interval *****
+     ROI1   ROI2  mean    SD P+
+1   a_ins   amyg 0.328 0.048  1
+2   a_ins   dACC 0.739 0.048  1
+3    amyg   dACC 0.272 0.047  1
+4   a_ins  dmPFC 0.765 0.047  1
+5    amyg  dmPFC 0.281 0.047  1
+6    dACC  dmPFC 0.884 0.049  1
+7   a_ins    PCC 0.248 0.048  1
+8    amyg    PCC 0.262 0.049  1
+9    dACC    PCC 0.441 0.047  1
+10  dmPFC    PCC 0.504 0.047  1
+11  a_ins pm_ins  0.77 0.048  1
+12   amyg pm_ins 0.432 0.049  1
+13   dACC pm_ins 0.787 0.049  1
+14  dmPFC pm_ins 0.548 0.049  1
+15    PCC pm_ins 0.244 0.048  1
+16  a_ins     TP 0.201 0.047  1
+17   amyg     TP 0.518  0.05  1
+18   dACC     TP 0.211 0.048  1
+19  dmPFC     TP 0.295 0.048  1
+20    PCC     TP 0.359 0.048  1
+21 pm_ins     TP 0.272 0.048  1
+22  a_ins  vmPFC 0.518 0.047  1
+23   amyg  vmPFC 0.428 0.049  1
+24   dACC  vmPFC 0.606 0.048  1
+25  dmPFC  vmPFC 0.667 0.048  1
+26    PCC  vmPFC 0.869  0.05  1
+27 pm_ins  vmPFC 0.446 0.048  1
+28     TP  vmPFC 0.444 0.048  1
+29  a_ins  dlPFC 0.527 0.048  1
+30   amyg  dlPFC 0.306 0.047  1
+31   dACC  dlPFC 0.579 0.047  1
+32  dmPFC  dlPFC 1.074 0.049  1
+33    PCC  dlPFC 0.676 0.047  1
+34 pm_ins  dlPFC 0.377 0.048  1
+35     TP  dlPFC 0.305 0.049  1
+36  vmPFC  dlPFC 0.736 0.048  1
+***** 36 region pairs based on 1-sided 95% uncertainty interval *****
+     ROI1   ROI2  mean    SD P+
+1   a_ins   amyg 0.328 0.048  1
+2   a_ins   dACC 0.739 0.048  1
+3    amyg   dACC 0.272 0.047  1
+4   a_ins  dmPFC 0.765 0.047  1
+5    amyg  dmPFC 0.281 0.047  1
+6    dACC  dmPFC 0.884 0.049  1
+7   a_ins    PCC 0.248 0.048  1
+8    amyg    PCC 0.262 0.049  1
+9    dACC    PCC 0.441 0.047  1
+10  dmPFC    PCC 0.504 0.047  1
+11  a_ins pm_ins  0.77 0.048  1
+12   amyg pm_ins 0.432 0.049  1
+13   dACC pm_ins 0.787 0.049  1
+14  dmPFC pm_ins 0.548 0.049  1
+15    PCC pm_ins 0.244 0.048  1
+16  a_ins     TP 0.201 0.047  1
+17   amyg     TP 0.518  0.05  1
+18   dACC     TP 0.211 0.048  1
+19  dmPFC     TP 0.295 0.048  1
+20    PCC     TP 0.359 0.048  1
+21 pm_ins     TP 0.272 0.048  1
+22  a_ins  vmPFC 0.518 0.047  1
+23   amyg  vmPFC 0.428 0.049  1
+24   dACC  vmPFC 0.606 0.048  1
+25  dmPFC  vmPFC 0.667 0.048  1
+26    PCC  vmPFC 0.869  0.05  1
+27 pm_ins  vmPFC 0.446 0.048  1
+28     TP  vmPFC 0.444 0.048  1
+29  a_ins  dlPFC 0.527 0.048  1
+30   amyg  dlPFC 0.306 0.047  1
+31   dACC  dlPFC 0.579 0.047  1
+32  dmPFC  dlPFC 1.074 0.049  1
+33    PCC  dlPFC 0.676 0.047  1
+34 pm_ins  dlPFC 0.377 0.048  1
+35     TP  dlPFC 0.305 0.049  1
+36  vmPFC  dlPFC 0.736 0.048  1
+***** 36 region pairs based on 2-sided 95% uncertainty interval *****
+     ROI1   ROI2  mean    SD P+
+1   a_ins   amyg 0.328 0.048  1
+2   a_ins   dACC 0.739 0.048  1
+3    amyg   dACC 0.272 0.047  1
+4   a_ins  dmPFC 0.765 0.047  1
+5    amyg  dmPFC 0.281 0.047  1
+6    dACC  dmPFC 0.884 0.049  1
+7   a_ins    PCC 0.248 0.048  1
+8    amyg    PCC 0.262 0.049  1
+9    dACC    PCC 0.441 0.047  1
+10  dmPFC    PCC 0.504 0.047  1
+11  a_ins pm_ins  0.77 0.048  1
+12   amyg pm_ins 0.432 0.049  1
+13   dACC pm_ins 0.787 0.049  1
+14  dmPFC pm_ins 0.548 0.049  1
+15    PCC pm_ins 0.244 0.048  1
+16  a_ins     TP 0.201 0.047  1
+17   amyg     TP 0.518  0.05  1
+18   dACC     TP 0.211 0.048  1
+19  dmPFC     TP 0.295 0.048  1
+20    PCC     TP 0.359 0.048  1
+21 pm_ins     TP 0.272 0.048  1
+22  a_ins  vmPFC 0.518 0.047  1
+23   amyg  vmPFC 0.428 0.049  1
+24   dACC  vmPFC 0.606 0.048  1
+25  dmPFC  vmPFC 0.667 0.048  1
+26    PCC  vmPFC 0.869  0.05  1
+27 pm_ins  vmPFC 0.446 0.048  1
+28     TP  vmPFC 0.444 0.048  1
+29  a_ins  dlPFC 0.527 0.048  1
+30   amyg  dlPFC 0.306 0.047  1
+31   dACC  dlPFC 0.579 0.047  1
+32  dmPFC  dlPFC 1.074 0.049  1
+33    PCC  dlPFC 0.676 0.047  1
+34 pm_ins  dlPFC 0.377 0.048  1
+35     TP  dlPFC 0.305 0.049  1
+36  vmPFC  dlPFC 0.736 0.048  1
+
+
+----- group level: MA
+***** 36 region pairs based on 1-sided 90% uncertainty interval *****
+     ROI1   ROI2  mean    SD    P+
+1   a_ins   amyg 0.251  0.05     1
+2   a_ins   dACC 0.663 0.052     1
+3    amyg   dACC 0.173 0.051     1
+4   a_ins  dmPFC 0.688 0.051     1
+5    amyg  dmPFC 0.182 0.051     1
+6    dACC  dmPFC 0.789 0.053     1
+7   a_ins    PCC 0.169  0.05     1
+8    amyg    PCC 0.183 0.052     1
+9    dACC    PCC 0.346  0.05     1
+10  dmPFC    PCC 0.417  0.05     1
+11  a_ins pm_ins 0.691 0.052     1
+12   amyg pm_ins 0.337 0.052     1
+13   dACC pm_ins 0.689 0.052     1
+14  dmPFC pm_ins 0.434 0.052     1
+15    PCC pm_ins 0.137 0.051 0.994
+16  a_ins     TP  0.11 0.051 0.984
+17   amyg     TP 0.448 0.053     1
+18   dACC     TP 0.104 0.051 0.974
+19  dmPFC     TP  0.19  0.05     1
+20    PCC     TP 0.283 0.052     1
+21 pm_ins     TP 0.159 0.051 0.998
+22  a_ins  vmPFC  0.42 0.049     1
+23   amyg  vmPFC 0.329 0.051     1
+24   dACC  vmPFC 0.487 0.051     1
+25  dmPFC  vmPFC 0.556 0.051     1
+26    PCC  vmPFC 0.793 0.052     1
+27 pm_ins  vmPFC 0.318 0.051     1
+28     TP  vmPFC 0.343 0.051     1
+29  a_ins  dlPFC 0.436 0.051     1
+30   amyg  dlPFC 0.205 0.051     1
+31   dACC  dlPFC 0.466  0.05     1
+32  dmPFC  dlPFC  0.99 0.052     1
+33    PCC  dlPFC 0.595 0.051     1
+34 pm_ins  dlPFC 0.252 0.051     1
+35     TP  dlPFC   0.2 0.051     1
+36  vmPFC  dlPFC 0.626  0.05     1
+***** 36 region pairs based on 1-sided 95% uncertainty interval *****
+     ROI1   ROI2  mean    SD    P+
+1   a_ins   amyg 0.251  0.05     1
+2   a_ins   dACC 0.663 0.052     1
+3    amyg   dACC 0.173 0.051     1
+4   a_ins  dmPFC 0.688 0.051     1
+5    amyg  dmPFC 0.182 0.051     1
+6    dACC  dmPFC 0.789 0.053     1
+7   a_ins    PCC 0.169  0.05     1
+8    amyg    PCC 0.183 0.052     1
+9    dACC    PCC 0.346  0.05     1
+10  dmPFC    PCC 0.417  0.05     1
+11  a_ins pm_ins 0.691 0.052     1
+12   amyg pm_ins 0.337 0.052     1
+13   dACC pm_ins 0.689 0.052     1
+14  dmPFC pm_ins 0.434 0.052     1
+15    PCC pm_ins 0.137 0.051 0.994
+16  a_ins     TP  0.11 0.051 0.984
+17   amyg     TP 0.448 0.053     1
+18   dACC     TP 0.104 0.051 0.974
+19  dmPFC     TP  0.19  0.05     1
+20    PCC     TP 0.283 0.052     1
+21 pm_ins     TP 0.159 0.051 0.998
+22  a_ins  vmPFC  0.42 0.049     1
+23   amyg  vmPFC 0.329 0.051     1
+24   dACC  vmPFC 0.487 0.051     1
+25  dmPFC  vmPFC 0.556 0.051     1
+26    PCC  vmPFC 0.793 0.052     1
+27 pm_ins  vmPFC 0.318 0.051     1
+28     TP  vmPFC 0.343 0.051     1
+29  a_ins  dlPFC 0.436 0.051     1
+30   amyg  dlPFC 0.205 0.051     1
+31   dACC  dlPFC 0.466  0.05     1
+32  dmPFC  dlPFC  0.99 0.052     1
+33    PCC  dlPFC 0.595 0.051     1
+34 pm_ins  dlPFC 0.252 0.051     1
+35     TP  dlPFC   0.2 0.051     1
+36  vmPFC  dlPFC 0.626  0.05     1
+***** 35 region pairs based on 2-sided 95% uncertainty interval *****
+     ROI1   ROI2  mean    SD    P+
+1   a_ins   amyg 0.251  0.05     1
+2   a_ins   dACC 0.663 0.052     1
+3    amyg   dACC 0.173 0.051     1
+4   a_ins  dmPFC 0.688 0.051     1
+5    amyg  dmPFC 0.182 0.051     1
+6    dACC  dmPFC 0.789 0.053     1
+7   a_ins    PCC 0.169  0.05     1
+8    amyg    PCC 0.183 0.052     1
+9    dACC    PCC 0.346  0.05     1
+10  dmPFC    PCC 0.417  0.05     1
+11  a_ins pm_ins 0.691 0.052     1
+12   amyg pm_ins 0.337 0.052     1
+13   dACC pm_ins 0.689 0.052     1
+14  dmPFC pm_ins 0.434 0.052     1
+15    PCC pm_ins 0.137 0.051 0.994
+16  a_ins     TP  0.11 0.051 0.984
+17   amyg     TP 0.448 0.053     1
+18  dmPFC     TP  0.19  0.05     1
+19    PCC     TP 0.283 0.052     1
+20 pm_ins     TP 0.159 0.051 0.998
+21  a_ins  vmPFC  0.42 0.049     1
+22   amyg  vmPFC 0.329 0.051     1
+23   dACC  vmPFC 0.487 0.051     1
+24  dmPFC  vmPFC 0.556 0.051     1
+25    PCC  vmPFC 0.793 0.052     1
+26 pm_ins  vmPFC 0.318 0.051     1
+27     TP  vmPFC 0.343 0.051     1
+28  a_ins  dlPFC 0.436 0.051     1
+29   amyg  dlPFC 0.205 0.051     1
+30   dACC  dlPFC 0.466  0.05     1
+31  dmPFC  dlPFC  0.99 0.052     1
+32    PCC  dlPFC 0.595 0.051     1
+33 pm_ins  dlPFC 0.252 0.051     1
+34     TP  dlPFC   0.2 0.051     1
+35  vmPFC  dlPFC 0.626  0.05     1
+
+
+===== Summary of region pair effects for group comparisons =====
+----- level comparison: HC vs MA
+***** 29 region pairs based on 1-sided 90% uncertainty interval *****
+     ROI1   ROI2  mean    SD    P+
+1    amyg   dACC 0.099 0.059 0.955
+2    amyg  dmPFC   0.1 0.059 0.945
+3    dACC  dmPFC 0.095 0.059 0.943
+4   a_ins    PCC 0.079  0.06 0.902
+5    amyg    PCC 0.079  0.06 0.902
+6    dACC    PCC 0.095 0.058 0.945
+7   dmPFC    PCC 0.087 0.059 0.929
+8    amyg pm_ins 0.096 0.059 0.946
+9    dACC pm_ins 0.098 0.061  0.94
+10  dmPFC pm_ins 0.114 0.059 0.968
+11    PCC pm_ins 0.107 0.059 0.964
+12  a_ins     TP  0.09  0.06  0.93
+13   dACC     TP 0.107  0.06 0.964
+14  dmPFC     TP 0.105 0.059  0.96
+15 pm_ins     TP 0.112  0.06 0.967
+16  a_ins  vmPFC 0.098 0.058  0.95
+17   amyg  vmPFC 0.099 0.059 0.954
+18   dACC  vmPFC 0.119  0.06 0.976
+19  dmPFC  vmPFC 0.111 0.059 0.968
+20 pm_ins  vmPFC 0.128 0.061 0.983
+21     TP  vmPFC   0.1 0.059  0.95
+22  a_ins  dlPFC 0.091 0.058 0.932
+23   amyg  dlPFC 0.101 0.058 0.957
+24   dACC  dlPFC 0.113 0.059 0.978
+25  dmPFC  dlPFC 0.084 0.061 0.905
+26    PCC  dlPFC 0.082 0.058 0.911
+27 pm_ins  dlPFC 0.124 0.061  0.98
+28     TP  dlPFC 0.105 0.058 0.962
+29  vmPFC  dlPFC  0.11 0.059 0.966
+***** 17 region pairs based on 1-sided 95% uncertainty interval *****
+     ROI1   ROI2  mean    SD    P+
+1    amyg   dACC 0.099 0.059 0.955
+2   dmPFC pm_ins 0.114 0.059 0.968
+3     PCC pm_ins 0.107 0.059 0.964
+4    dACC     TP 0.107  0.06 0.964
+5   dmPFC     TP 0.105 0.059  0.96
+6  pm_ins     TP 0.112  0.06 0.967
+7   a_ins  vmPFC 0.098 0.058  0.95
+8    amyg  vmPFC 0.099 0.059 0.954
+9    dACC  vmPFC 0.119  0.06 0.976
+10  dmPFC  vmPFC 0.111 0.059 0.968
+11 pm_ins  vmPFC 0.128 0.061 0.983
+12     TP  vmPFC   0.1 0.059  0.95
+13   amyg  dlPFC 0.101 0.058 0.957
+14   dACC  dlPFC 0.113 0.059 0.978
+15 pm_ins  dlPFC 0.124 0.061  0.98
+16     TP  dlPFC 0.105 0.058 0.962
+17  vmPFC  dlPFC  0.11 0.059 0.966
+***** 4 region pairs based on 2-sided 95% uncertainty interval *****
+    ROI1  ROI2  mean    SD    P+
+1   dACC vmPFC 0.119  0.06 0.976
+2 pm_ins vmPFC 0.128 0.061 0.983
+3   dACC dlPFC 0.113 0.059 0.978
+4 pm_ins dlPFC 0.124 0.061  0.98
+
+
+===== Summary of region effects for group =====
+----- group level: HC
+        mean    SD    P+   2.5%     5%   50%   95% 97.5%
+a_ins  0.238 0.083 0.996  0.077  0.102 0.238 0.374 0.399
+amyg   0.145 0.100 0.922 -0.046 -0.021 0.146 0.305 0.325
+dACC   0.300 0.083 1.000  0.137  0.171 0.298 0.438 0.466
+dmPFC  0.332 0.094 1.000  0.160  0.181 0.330 0.493 0.527
+PCC    0.194 0.083 0.987  0.024  0.057 0.197 0.325 0.349
+pm_ins 0.264 0.082 0.998  0.101  0.131 0.263 0.399 0.428
+TP     0.134 0.102 0.910 -0.059 -0.025 0.129 0.302 0.325
+vmPFC  0.326 0.089 1.000  0.152  0.180 0.327 0.473 0.500
+dlPFC  0.305 0.085 1.000  0.146  0.177 0.304 0.450 0.483
+
+
+----- group level: MA
+        mean    SD    P+   2.5%     5%   50%   95% 97.5%
+a_ins  0.201 0.083 0.991  0.036  0.066 0.198 0.344 0.378
+amyg   0.106 0.098 0.848 -0.086 -0.062 0.108 0.255 0.277
+dACC   0.246 0.086 0.998  0.081  0.111 0.245 0.389 0.420
+dmPFC  0.280 0.097 0.998  0.103  0.129 0.279 0.443 0.479
+PCC    0.158 0.084 0.964 -0.016  0.017 0.160 0.290 0.312
+pm_ins 0.205 0.083 0.994  0.044  0.068 0.202 0.342 0.369
+TP     0.090 0.100 0.814 -0.108 -0.070 0.086 0.248 0.269
+vmPFC  0.267 0.091 0.998  0.093  0.119 0.268 0.418 0.447
+dlPFC  0.251 0.086 0.998  0.092  0.120 0.250 0.397 0.430
+
+
+===== Summary of region effects for group comparisons =====
+----- level comparison: HC vs MA
+        mean    SD    P+   2.5%     5%   50%   95% 97.5%
+a_ins  0.036 0.032 0.874 -0.030 -0.019 0.037 0.086 0.095
+amyg   0.039 0.031 0.903 -0.024 -0.013 0.039 0.089 0.098
+dACC   0.053 0.030 0.961 -0.005  0.004 0.053 0.104 0.116
+dmPFC  0.051 0.030 0.955 -0.010  0.002 0.052 0.100 0.110
+PCC    0.037 0.031 0.890 -0.024 -0.017 0.037 0.087 0.094
+pm_ins 0.058 0.031 0.972 -0.002  0.006 0.058 0.112 0.119
+TP     0.044 0.031 0.922 -0.019 -0.007 0.044 0.093 0.103
+vmPFC  0.059 0.031 0.972 -0.002  0.007 0.058 0.110 0.121
+dlPFC  0.054 0.030 0.961 -0.006  0.005 0.055 0.104 0.113
+
+
