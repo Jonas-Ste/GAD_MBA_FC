@@ -21,7 +21,7 @@ This can be executed by running the following command in your console:
 nohup tcsh -x run_MBA_full.txt > diary.txt &
 ```
 For details please refer to the MBA help file linked above.
-The folder "exemplary_output" contains the the results from the Bayesian multilevel model that are reported in the manuscript. The R-Workspace file containing the results is also used in the "04_Figures"-section to create Figure 1 and 2.
+The folder "exemplary_output" contains the the results from running the Bayesian multilevel model that are reported in the manuscript. The R-Workspace file containing the results is also used in the "04_Figures"-section to create Figure 1 and 2.
 Please note that the final outputs from running the scripts above will not exactly match the results from the "exemplary_output"-folder due to nature of randomness involved in the simulations run in this script. They will, however, always be very close to each other.
 
 ## 03_NHST_analysis
