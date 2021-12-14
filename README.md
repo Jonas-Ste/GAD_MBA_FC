@@ -1,9 +1,9 @@
 # Analysis Scripts and Data for Steinhäuser et al. "Functional dissection of neural connectivity in generalized anxiety disorder"
 Jonas L. Steinhäuser, Adam R. Teed, Obada Al-Zoubi, René Hurlemann, Gang Chen, Sahib S. Khalsa
 
-These datafiles and scripts reproduce the results reported in the main manuscript and supplement.
+These datafiles and scripts reproduce the results reported in the main manuscript.
 The root of this project contains a file with the preprocessing parameters used in AFNI for preprocessing raw MRI data ("preprocessing_command_afniproc.sh"). This script is meant to transparently communicate choices during preprocessing of the data but can not be run since raw MRI data of subjects are not provided due to their size and the sensitive nature of this data. 
-The files "FC_analysis_mask_resampled+tlrc.HEAD" and "FC_analysis_mask_resampled+tlrc.BRIK" are an AFNI mask in MNI-space that contain the ROIs used in this analysis and are based on the [Brainnetome-Atlas](https://atlas.brainnetome.org/) (see Methods section of the manuscript for the details). These can be used in AFNI to display the ROIs we used for the analysis - each ROI is coded separately and will appear in a different color in AFNI.
+The files "FC_analysis_mask_resampled+tlrc.HEAD" and "FC_analysis_mask_resampled+tlrc.BRIK" are an AFNI mask in MNI-space that contain the ROIs used in this analysis and are based on the [Brainnetome-Atlas](https://atlas.brainnetome.org/) (see materials & methods section of the manuscript for the details). These can be used in AFNI to display the ROIs we used for the analysis - each ROI is coded separately and will appear in a different color in AFNI.
 
 ## 00_data
 This folder contains two csv-files. One provides the (anonymized) demographical and clinical information of the 55 subjects from the analyzed study sample. The second one contains the correlation coefficients for all ROIs analyzed for each subject individually. 
