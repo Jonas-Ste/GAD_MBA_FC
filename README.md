@@ -25,7 +25,7 @@ nohup tcsh -x run_MBA_full.txt > diary.txt &
 ```
 For details please refer to the MBA help file linked above.
 The folder "exemplary_output" contains the the results from the Bayesian multilevel model that are reported in the manuscript. The R-Workspace file containing the results is also used in the "04_Figures"-section to create Figure 1 and 2.
-Please note that the final outputs will not exactly match the results reported in the manuscript and supplement due to nature of randomness involved in the simulations run in this script. They will, however, always be very close to each other.
+Please note that the final outputs from running the scripts above will not exactly match the results from the "exemplary_output"-folder due to nature of randomness involved in the simulations run in this script. They will, however, always be very close to each other.
 
 ## 04_Figures
 The script "create_raincloudplot_Figure1.R" recreates Panel B of Figure 3, the raincloud plots of the vmPFC-PMI z-scores for each group individually.
