@@ -9,12 +9,9 @@ The files "FC_analysis_mask_resampled+tlrc.HEAD" and "FC_analysis_mask_resampled
 This folder contains two csv-files. One provides the (anonymized) demographical and clinical information of the 55 subjects from the analyzed study sample. The second one contains the correlation coefficients for all ROIs analyzed for each subject individually. 
 
 ## 01_demographics_and_headmotion
-This script produces the demographical table describing the study sample. Further it contains information on average headmotion as evaluated during first-level preprocessing. 
+The script "compare_groups.R" produces the demographical table describing the study sample. Further it contains information on average headmotion as evaluated during first-level preprocessing. 
 
-## 02_NHST_analysis
-The first script "NHST_test_apriori_hypotheses.R" tests a-priori defined hypotheses of functional correlativity between ROIs as described in the [pre-registration of this study](https://osf.io/j29qv). The second script "correlation_clinical_variables.R" produces the table with correlations between the vmPFC-PMI z-score and clinical variables that is included in the supplementary material.
-
-## 03_MBA_analysis
+## 02_MBA_analysis
 This folder contains all files necessary to re-run the Bayesian multilevel model. Please note that an up-to-date installation of AFNI is needed in order for the scripts to run.
 Please refer to the [help file of the AFNI MBA function](https://afni.nimh.nih.gov/pub/dist/doc/program_help/MBA.html) on how to set-up AFNI and MBA correctly.
 Then use the "prepare_MBA_analysis.R" script to produce the input file to MBA in the correct structure. For convenience, the generated input file ("MBA_input_full.txt") is included in the folder but can also be reproduced by running the script. The file "ROIlist.txt" contains the names for the ROIs as they will appear in the output of the MBA function.
@@ -26,6 +23,9 @@ nohup tcsh -x run_MBA_full.txt > diary.txt &
 For details please refer to the MBA help file linked above.
 The folder "exemplary_output" contains the the results from the Bayesian multilevel model that are reported in the manuscript. The R-Workspace file containing the results is also used in the "04_Figures"-section to create Figure 1 and 2.
 Please note that the final outputs from running the scripts above will not exactly match the results from the "exemplary_output"-folder due to nature of randomness involved in the simulations run in this script. They will, however, always be very close to each other.
+
+## 03_NHST_analysis
+The first script "NHST_test_apriori_hypotheses.R" tests a-priori defined hypotheses of functional correlativity between ROIs as described in the [pre-registration of this study](https://osf.io/j29qv). The second script "correlation_clinical_variables.R" produces the table with correlations between the vmPFC-PMI z-score and clinical variables that is included in the supplementary material.
 
 ## 04_Figures
 This folder contains all scripts and files necessary to produce Figures 1-4 from the manuscript as well as the "raw_figures"-subfolder that contains the raw figures in high-resolution PDF format generated from the files/scripts in this directory.
