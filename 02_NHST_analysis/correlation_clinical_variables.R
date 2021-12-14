@@ -31,6 +31,17 @@ df.clinical <- df.correlations %>%
 
 ### Correlations for GAD-Group ###
 
+# cor: ASI-Total in GAD
+clinical.cor.GAD <- 
+  df.clinical %>%
+  filter(Group == "MA") %>% 
+  cor.test(.$cor_z, .$ASI.Total, method = "pearson", data = .) %>% 
+  tidy() %>% 
+  mutate(questionnaire = "ASI-Total") %>%
+  rename(pearson_r = estimate,
+         t_value = statistic,
+         df = parameter)
+
 # cor: GAD-7 in GAD
 clinical.cor.GAD <- 
   df.clinical %>%
@@ -40,7 +51,8 @@ clinical.cor.GAD <-
   mutate(questionnaire = "GAD-7") %>% 
   rename(pearson_r = estimate,
          t_value = statistic,
-         df = parameter)
+         df = parameter) %>% 
+  bind_rows(clinical.cor.GAD)
 
 # cor: PHQ-9 in GAD
 clinical.cor.GAD <- 
@@ -49,18 +61,6 @@ clinical.cor.GAD <-
   cor.test(.$cor_z, .$PHQ.9, method = "pearson", data = .) %>% 
   tidy() %>% 
   mutate(questionnaire = "PHQ-9") %>%
-  rename(pearson_r = estimate,
-         t_value = statistic,
-         df = parameter) %>% 
-  bind_rows(clinical.cor.GAD)
-
-# cor: ASI-Total in GAD
-clinical.cor.GAD <- 
-  df.clinical %>%
-  filter(Group == "MA") %>% 
-  cor.test(.$cor_z, .$ASI.Total, method = "pearson", data = .) %>% 
-  tidy() %>% 
-  mutate(questionnaire = "ASI-Total") %>%
   rename(pearson_r = estimate,
          t_value = statistic,
          df = parameter) %>% 
@@ -116,6 +116,17 @@ clinical.cor.GAD
 
 ### Correlations for HC-Group ###
 
+# cor: ASI-Total in HC
+clinical.cor.HC <- 
+  df.clinical %>%
+  filter(Group == "HC") %>% 
+  cor.test(.$cor_z, .$ASI.Total, method = "pearson", data = .) %>% 
+  tidy() %>% 
+  mutate(questionnaire = "ASI-Total") %>%
+  rename(pearson_r = estimate,
+         t_value = statistic,
+         df = parameter)
+
 # cor: GAD-7 in HC
 clinical.cor.HC <- 
   df.clinical %>%
@@ -125,7 +136,8 @@ clinical.cor.HC <-
   mutate(questionnaire = "GAD-7") %>% 
   rename(pearson_r = estimate,
          t_value = statistic,
-         df = parameter)
+         df = parameter) %>% 
+  bind_rows(clinical.cor.HC)
 
 # cor: PHQ-9 in HC
 clinical.cor.HC <- 
@@ -139,23 +151,11 @@ clinical.cor.HC <-
          df = parameter) %>% 
   bind_rows(clinical.cor.HC)
 
-# cor: ASI-Total in HC
+# cor: STAI-State in HC  - missing data from one HC
 clinical.cor.HC <- 
   df.clinical %>%
   filter(Group == "HC") %>% 
-  cor.test(.$cor_z, .$ASI.Total, method = "pearson", data = .) %>% 
-  tidy() %>% 
-  mutate(questionnaire = "ASI-Total") %>%
-  rename(pearson_r = estimate,
-         t_value = statistic,
-         df = parameter) %>% 
-  bind_rows(clinical.cor.HC)
-
-# cor: STAI-State in HC
-clinical.cor.HC <- 
-  df.clinical %>%
-  filter(Group == "HC") %>% 
-  cor.test(.$cor_z, .$STAI.State, method = "pearson", data = .) %>% 
+  cor.test(.$cor_z, .$STAI.State, method = "pearson", na.action = "na.omit", data = .) %>% 
   tidy() %>% 
   mutate(questionnaire = "STAI-State") %>%
   rename(pearson_r = estimate,
@@ -163,11 +163,11 @@ clinical.cor.HC <-
          df = parameter) %>% 
   bind_rows(clinical.cor.HC)
 
-# cor: STAI-Trait in HC
+# cor: STAI-Trait in HC - missing data from one HC
 clinical.cor.HC <- 
   df.clinical %>%
   filter(Group == "HC") %>% 
-  cor.test(.$cor_z, .$STAI.Trait, method = "pearson", data = .) %>% 
+  cor.test(.$cor_z, .$STAI.Trait, method = "pearson", na.action = "na.omit", data = .) %>% 
   tidy() %>% 
   mutate(questionnaire = "STAI-Trait") %>%
   rename(pearson_r = estimate,
