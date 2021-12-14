@@ -15,7 +15,7 @@ This script produces the demographical table describing the study sample. Furthe
 The first script "NHST_test_apriori_hypotheses.R" tests a-priori defined hypotheses of functional correlativity between ROIs as described in the [pre-registration of this study](https://osf.io/j29qv). The second script "correlation_clinical_variables.R" produces the table with correlations between the vmPFC-PMI z-score and clinical variables that is included in the supplementary material.
 
 ## 03_MBA_analysis
-This folder contains all files necessary to re-run the Bayesian Multilevel model. Please note that an up-to-date installation of AFNI is needed in order for the scripts to run.
+This folder contains all files necessary to re-run the Bayesian multilevel model. Please note that an up-to-date installation of AFNI is needed in order for the scripts to run.
 Please refer to the [help file of the AFNI MBA function](https://afni.nimh.nih.gov/pub/dist/doc/program_help/MBA.html) on how to set-up AFNI and MBA correctly.
 Then use the "prepare_MBA_analysis.R" script to produce the input file to MBA in the correct structure. For convenience, the generated input file ("MBA_input_full.txt") is included in the folder but can also be reproduced by running the script. The file "ROIlist.txt" contains the names for the ROIs as they will appear in the output of the MBA function.
 Lastly, the file "run_MBA_full.txt" contains the AFNI command to call the MBA function with the correct model and the data-table produced by the script above. 
@@ -24,8 +24,9 @@ This can be executed by running the following command in your console:
 nohup tcsh -x run_MBA_full.txt > diary.txt &
 ```
 For details please refer to the MBA help file linked above.
+The folder "exemplary_output" contains the the results from the Bayesian multilevel model that are reported in the manuscript. The R-Workspace file containing the results is also used in the "04_Figures"-section to create Figure 1 and 2.
 Please note that the final outputs will not exactly match the results reported in the manuscript and supplement due to nature of randomness involved in the simulations run in this script. They will, however, always be very close to each other.
 
 ## 04_Figures
-The script "create_raincloudplot_Figure1.R" recreates Panel B of Figure 1, the raincloud plots of the vmPFC-PMI z-scores for each group individually.
-The file "Figure1_Illustrator_File.ai" is a project-file for Adobe Illustrator used to create Figure 1 with panels A and B. Please note that Adobe Illustrator, a commercial software, is needed in order to view and edit this file. The file "Figure3_CONSORT_diagram.pptx" recreates the CONSORT diagram of the study. The "raw_figures"-subfolder contains the raw figures produced from both files/scripts in high-resolution PDF format. Since Figure2 is created in the process of running the MBA analysis (see 03_MBA_analysis) it is not included here. 
+The script "create_raincloudplot_Figure1.R" recreates Panel B of Figure 3, the raincloud plots of the vmPFC-PMI z-scores for each group individually.
+The file "Figure1_Illustrator_File.ai" is a project-file for Adobe Illustrator used to create Figure 3 with panels A and B. Please note that Adobe Illustrator, a commercial software, is needed in order to view and edit this file. The file "Figure4_CONSORT_diagram.pptx" recreates the CONSORT diagram of the study. The "raw_figures"-subfolder contains the raw figures produced from both files/scripts in high-resolution PDF format. Since Figure 1 and 2 are created in the process of running the MBA analysis (see 03_MBA_analysis) they are not included here. 
