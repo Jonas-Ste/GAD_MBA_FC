@@ -1,0 +1,5 @@
+MBA -prefix Iso_MBA_full_output -Y cor_z\
+   -chains 4 -iterations 1000 -model '1+group' \
+   -cVars 'group' -EOI 'group' \
+   -dataTable MBA_input_full.txt \
+   -ROIlist ROIlist.txt
