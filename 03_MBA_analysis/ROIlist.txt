@@ -1,9 +1,0 @@
-dmPFC
-PCC
-a_ins
-pm_ins
-dACC
-amyg
-TP
-dlPFC
-vmPFC
