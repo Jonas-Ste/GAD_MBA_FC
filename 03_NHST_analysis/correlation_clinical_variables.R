@@ -2,6 +2,7 @@
 library(tidyverse)
 library(DescTools)
 library(broom)
+library(BayesFactor)
 
 
 # Load demographical data 
@@ -20,7 +21,6 @@ df.correlations$cor_z <- FisherZ(df.correlations$cor_r)
 # build new dataframe with results z-score of vmPFC-PMI connectivity and scores on clinical questionnaires
 df.clinical <- df.correlations %>%
   filter(roi_1 == "vmPFC" & roi_2 == "pm_ins") %>% 
-  select(-Group) %>% 
   inner_join(df.demographics, by = "ID")
 
 
@@ -37,10 +37,17 @@ clinical.cor.GAD <-
   filter(Group == "MA") %>% 
   cor.test(.$cor_z, .$ASI.Total, method = "pearson", data = .) %>% 
   tidy() %>% 
-  mutate(questionnaire = "ASI-Total") %>%
+  mutate(questionnaire = "ASI-Total",
+         BF = NA) %>%
   rename(pearson_r = estimate,
          t_value = statistic,
          df = parameter)
+# calculate Bayes Factor
+clinical.cor.GAD[clinical.cor.GAD$questionnaire == "ASI-Total", "BF"] <- df.clinical %>%
+  filter(Group == "MA") %>% 
+  {correlationBF(.$cor_z, .$ASI.Total)} %>% 
+  extractBF() %>% 
+  {.$bf}
 
 # cor: GAD-7 in GAD
 clinical.cor.GAD <- 
@@ -48,11 +55,19 @@ clinical.cor.GAD <-
   filter(Group == "MA") %>% 
   cor.test(.$cor_z, .$GAD7, method = "pearson", data = .) %>% 
   tidy() %>% 
-  mutate(questionnaire = "GAD-7") %>% 
+  mutate(questionnaire = "GAD-7",
+         BF = NA) %>% 
   rename(pearson_r = estimate,
          t_value = statistic,
          df = parameter) %>% 
   bind_rows(clinical.cor.GAD)
+
+# calculate Bayes Factor
+clinical.cor.GAD[clinical.cor.GAD$questionnaire == "GAD-7", "BF"] <- df.clinical %>%
+  filter(Group == "MA") %>% 
+  {correlationBF(.$cor_z, .$GAD7)} %>% 
+  extractBF() %>% 
+  {.$bf}
 
 # cor: PHQ-9 in GAD
 clinical.cor.GAD <- 
@@ -60,11 +75,19 @@ clinical.cor.GAD <-
   filter(Group == "MA") %>% 
   cor.test(.$cor_z, .$PHQ.9, method = "pearson", data = .) %>% 
   tidy() %>% 
-  mutate(questionnaire = "PHQ-9") %>%
+  mutate(questionnaire = "PHQ-9",
+         BF = NA) %>%
   rename(pearson_r = estimate,
          t_value = statistic,
          df = parameter) %>% 
   bind_rows(clinical.cor.GAD)
+
+# calculate Bayes Factor
+clinical.cor.GAD[clinical.cor.GAD$questionnaire == "PHQ-9", "BF"] <- df.clinical %>%
+  filter(Group == "MA") %>% 
+  {correlationBF(.$cor_z, .$PHQ.9)} %>% 
+  extractBF() %>% 
+  {.$bf}
 
 # cor: STAI-State in GAD
 clinical.cor.GAD <- 
@@ -72,11 +95,19 @@ clinical.cor.GAD <-
   filter(Group == "MA") %>% 
   cor.test(.$cor_z, .$STAI.State, method = "pearson", data = .) %>% 
   tidy() %>% 
-  mutate(questionnaire = "STAI-State") %>%
+  mutate(questionnaire = "STAI-State",
+         BF = NA) %>%
   rename(pearson_r = estimate,
          t_value = statistic,
          df = parameter) %>% 
   bind_rows(clinical.cor.GAD)
+
+# calculate Bayes Factor
+clinical.cor.GAD[clinical.cor.GAD$questionnaire == "STAI-State", "BF"] <- df.clinical %>%
+  filter(Group == "MA") %>% 
+  {correlationBF(.$cor_z, .$STAI.State)} %>% 
+  extractBF() %>% 
+  {.$bf}
 
 # cor: STAI-Trait in GAD
 clinical.cor.GAD <- 
@@ -84,11 +115,19 @@ clinical.cor.GAD <-
   filter(Group == "MA") %>% 
   cor.test(.$cor_z, .$STAI.Trait, method = "pearson", data = .) %>% 
   tidy() %>% 
-  mutate(questionnaire = "STAI-Trait") %>%
+  mutate(questionnaire = "STAI-Trait",
+         BF = NA) %>%
   rename(pearson_r = estimate,
          t_value = statistic,
          df = parameter) %>% 
   bind_rows(clinical.cor.GAD)
+
+# calculate Bayes Factor
+clinical.cor.GAD[clinical.cor.GAD$questionnaire == "STAI-Trait", "BF"] <- df.clinical %>%
+  filter(Group == "MA") %>% 
+  {correlationBF(.$cor_z, .$STAI.Trait)} %>% 
+  extractBF() %>% 
+  {.$bf}
 
 # cor: OASIS in GAD
 clinical.cor.GAD <- 
@@ -96,18 +135,26 @@ clinical.cor.GAD <-
   filter(Group == "MA") %>% 
   cor.test(.$cor_z, .$OASIS, method = "pearson", data = .) %>% 
   tidy() %>% 
-  mutate(questionnaire = "OASIS") %>%
+  mutate(questionnaire = "OASIS",
+         BF = NA) %>%
   rename(pearson_r = estimate,
          t_value = statistic,
          df = parameter) %>% 
   bind_rows(clinical.cor.GAD)
+
+# calculate Bayes Factor
+clinical.cor.GAD[clinical.cor.GAD$questionnaire == "OASIS", "BF"] <- df.clinical %>%
+  filter(Group == "MA") %>% 
+  {correlationBF(.$cor_z, .$OASIS)} %>% 
+  extractBF() %>% 
+  {.$bf}
 
 # correct for multiple comparisons using FDR, reorder to match order in manuscript
 
 clinical.cor.GAD <- 
   clinical.cor.GAD %>% 
   mutate(p_adj = p.adjust(.$p.value, method = "fdr")) %>%
-  relocate(p_adj, .after = p.value) %>% 
+  relocate(p_adj,BF, .after = p.value) %>% 
   relocate(questionnaire, .before = pearson_r) %>%
   arrange(-row_number())
 
@@ -122,10 +169,18 @@ clinical.cor.HC <-
   filter(Group == "HC") %>% 
   cor.test(.$cor_z, .$ASI.Total, method = "pearson", data = .) %>% 
   tidy() %>% 
-  mutate(questionnaire = "ASI-Total") %>%
+  mutate(questionnaire = "ASI-Total",
+         BF = NA) %>%
   rename(pearson_r = estimate,
          t_value = statistic,
          df = parameter)
+
+# calculate Bayes Factor
+clinical.cor.HC[clinical.cor.HC$questionnaire == "ASI-Total", "BF"] <- df.clinical %>%
+  filter(Group == "HC") %>% 
+  {correlationBF(.$cor_z, .$ASI.Total)} %>% 
+  extractBF() %>% 
+  {.$bf}
 
 # cor: GAD-7 in HC
 clinical.cor.HC <- 
@@ -139,6 +194,13 @@ clinical.cor.HC <-
          df = parameter) %>% 
   bind_rows(clinical.cor.HC)
 
+# calculate Bayes Factor
+clinical.cor.HC[clinical.cor.HC$questionnaire == "GAD-7", "BF"] <- df.clinical %>%
+  filter(Group == "HC") %>% 
+  {correlationBF(.$cor_z, .$GAD7)} %>% 
+  extractBF() %>% 
+  {.$bf}
+
 # cor: PHQ-9 in HC
 clinical.cor.HC <- 
   df.clinical %>%
@@ -150,6 +212,13 @@ clinical.cor.HC <-
          t_value = statistic,
          df = parameter) %>% 
   bind_rows(clinical.cor.HC)
+
+# calculate Bayes Factor
+clinical.cor.HC[clinical.cor.HC$questionnaire == "PHQ-9", "BF"] <- df.clinical %>%
+  filter(Group == "HC") %>% 
+  {correlationBF(.$cor_z, .$PHQ.9)} %>% 
+  extractBF() %>% 
+  {.$bf}
 
 # cor: STAI-State in HC  - missing data from one HC
 clinical.cor.HC <- 
@@ -163,6 +232,13 @@ clinical.cor.HC <-
          df = parameter) %>% 
   bind_rows(clinical.cor.HC)
 
+# calculate Bayes Factor
+clinical.cor.HC[clinical.cor.HC$questionnaire == "STAI-State", "BF"] <- df.clinical %>%
+  filter(Group == "HC") %>% 
+  {correlationBF(.$cor_z, .$STAI.State)} %>% 
+  extractBF() %>% 
+  {.$bf}
+
 # cor: STAI-Trait in HC - missing data from one HC
 clinical.cor.HC <- 
   df.clinical %>%
@@ -174,6 +250,13 @@ clinical.cor.HC <-
          t_value = statistic,
          df = parameter) %>% 
   bind_rows(clinical.cor.HC)
+
+# calculate Bayes Factor
+clinical.cor.HC[clinical.cor.HC$questionnaire == "STAI-Trait", "BF"] <- df.clinical %>%
+  filter(Group == "HC") %>% 
+  {correlationBF(.$cor_z, .$STAI.Trait)} %>% 
+  extractBF() %>% 
+  {.$bf}
 
 # cor: OASIS in HC
 clinical.cor.HC <- 
@@ -187,12 +270,19 @@ clinical.cor.HC <-
          df = parameter) %>% 
   bind_rows(clinical.cor.HC)
 
+# calculate Bayes Factor
+clinical.cor.HC[clinical.cor.HC$questionnaire == "OASIS", "BF"] <- df.clinical %>%
+  filter(Group == "HC") %>% 
+  {correlationBF(.$cor_z, .$OASIS)} %>% 
+  extractBF() %>% 
+  {.$bf}
+
 # correct for multiple comparisons using FDR, reorder to match order in manuscript
 
 clinical.cor.HC <- 
   clinical.cor.HC %>% 
   mutate(p_adj = p.adjust(.$p.value, method = "fdr")) %>%
-  relocate(p_adj, .after = p.value) %>% 
+  relocate(p_adj, BF, .after = p.value) %>% 
   relocate(questionnaire, .before = pearson_r) %>%
   arrange(-row_number())
 
