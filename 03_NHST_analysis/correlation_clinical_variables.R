@@ -38,7 +38,7 @@ clinical.cor.GAD <-
   cor.test(.$cor_z, .$ASI.Total, method = "pearson", data = .) %>% 
   tidy() %>% 
   mutate(questionnaire = "ASI-Total",
-         BF = NA) %>%
+         BF = NA_real_) %>%
   rename(pearson_r = estimate,
          t_value = statistic,
          df = parameter)
@@ -55,8 +55,7 @@ clinical.cor.GAD <-
   filter(Group == "MA") %>% 
   cor.test(.$cor_z, .$GAD7, method = "pearson", data = .) %>% 
   tidy() %>% 
-  mutate(questionnaire = "GAD-7",
-         BF = NA) %>% 
+  mutate(questionnaire = "GAD-7") %>% 
   rename(pearson_r = estimate,
          t_value = statistic,
          df = parameter) %>% 
@@ -75,8 +74,7 @@ clinical.cor.GAD <-
   filter(Group == "MA") %>% 
   cor.test(.$cor_z, .$PHQ.9, method = "pearson", data = .) %>% 
   tidy() %>% 
-  mutate(questionnaire = "PHQ-9",
-         BF = NA) %>%
+  mutate(questionnaire = "PHQ-9") %>%
   rename(pearson_r = estimate,
          t_value = statistic,
          df = parameter) %>% 
@@ -95,8 +93,7 @@ clinical.cor.GAD <-
   filter(Group == "MA") %>% 
   cor.test(.$cor_z, .$STAI.State, method = "pearson", data = .) %>% 
   tidy() %>% 
-  mutate(questionnaire = "STAI-State",
-         BF = NA) %>%
+  mutate(questionnaire = "STAI-State") %>%
   rename(pearson_r = estimate,
          t_value = statistic,
          df = parameter) %>% 
@@ -115,8 +112,7 @@ clinical.cor.GAD <-
   filter(Group == "MA") %>% 
   cor.test(.$cor_z, .$STAI.Trait, method = "pearson", data = .) %>% 
   tidy() %>% 
-  mutate(questionnaire = "STAI-Trait",
-         BF = NA) %>%
+  mutate(questionnaire = "STAI-Trait") %>%
   rename(pearson_r = estimate,
          t_value = statistic,
          df = parameter) %>% 
@@ -135,8 +131,7 @@ clinical.cor.GAD <-
   filter(Group == "MA") %>% 
   cor.test(.$cor_z, .$OASIS, method = "pearson", data = .) %>% 
   tidy() %>% 
-  mutate(questionnaire = "OASIS",
-         BF = NA) %>%
+  mutate(questionnaire = "OASIS") %>%
   rename(pearson_r = estimate,
          t_value = statistic,
          df = parameter) %>% 
@@ -149,13 +144,12 @@ clinical.cor.GAD[clinical.cor.GAD$questionnaire == "OASIS", "BF"] <- df.clinical
   extractBF() %>% 
   {.$bf}
 
-# correct for multiple comparisons using FDR, reorder to match order in manuscript
+# reorder to match order in manuscript
 
 clinical.cor.GAD <- 
   clinical.cor.GAD %>% 
-  mutate(p_adj = p.adjust(.$p.value, method = "fdr")) %>%
-  relocate(p_adj,BF, .after = p.value) %>% 
-  relocate(questionnaire, .before = pearson_r) %>%
+  relocate(BF, .after = p.value) %>% 
+  relocate(questionnaire, .before = pearson_r)
   arrange(-row_number())
 
 clinical.cor.GAD
@@ -170,7 +164,7 @@ clinical.cor.HC <-
   cor.test(.$cor_z, .$ASI.Total, method = "pearson", data = .) %>% 
   tidy() %>% 
   mutate(questionnaire = "ASI-Total",
-         BF = NA) %>%
+         BF = NA_real_) %>%
   rename(pearson_r = estimate,
          t_value = statistic,
          df = parameter)
@@ -277,13 +271,12 @@ clinical.cor.HC[clinical.cor.HC$questionnaire == "OASIS", "BF"] <- df.clinical %
   extractBF() %>% 
   {.$bf}
 
-# correct for multiple comparisons using FDR, reorder to match order in manuscript
+# reorder to match order in manuscript
 
 clinical.cor.HC <- 
   clinical.cor.HC %>% 
-  mutate(p_adj = p.adjust(.$p.value, method = "fdr")) %>%
-  relocate(p_adj, BF, .after = p.value) %>% 
-  relocate(questionnaire, .before = pearson_r) %>%
+  relocate(BF, .after = p.value) %>% 
+  relocate(questionnaire, .before = pearson_r)
   arrange(-row_number())
 
 clinical.cor.HC
