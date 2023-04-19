@@ -1,4 +1,4 @@
-# Analysis Scripts and Data for Steinhäuser et al. "Functional dissection of neural connectivity in females with generalized anxiety disorder "
+# Analysis Scripts and Data for Steinhäuser et al. "Reduced vmPFC to insula functional connectivity in generalized anxiety disorder: a Bayesian confirmation study"
 Jonas L. Steinhäuser, Adam R. Teed, Obada Al-Zoubi, René Hurlemann, Gang Chen, Sahib S. Khalsa
 
 These datafiles and scripts reproduce the results reported in the main manuscript.
@@ -29,6 +29,8 @@ The first script "NHST_test_apriori_hypotheses.R" tests a-priori defined hypothe
 
 ## 04_Figures
 This folder contains all scripts and files necessary to produce Figures 1-3 from the manuscript (and Figure S2 from the Supplement) as well as the "raw_figures"-subfolder that contains the raw figures in high-resolution PDF format generated from the files/scripts in this directory.
-The scripts "Figure1_create_ridge_plot_region_pairs.R" and "Figure2_create_ridge_plot_region_effects.R" are courtesy of Gang Chen that have been modified to suit the data structure in this repository. They will create the ridge plots of region pairs and region effects (Figure 1 and 2). Please note that the labels of Figure 1 have been slightly modified (bold font and/or asterisks) to highlight region pairs included in the NHST-analysis.
+The scripts "Figure1_create_ridge_plot_region_pairs.R" and "Figure2_create_ridge_plot_region_effects.R" are courtesy of Gang Chen that have been modified to suit the data structure in this repository. They will create the ridge plots of region pairs and region effects (Figure 1 and 2). Please note that the labels of Figure 1 have been slightly modified (bold font and/or daggers) to highlight region pairs included in the NHST-analysis.
+This has been achieved through editing in Illustrator - see file "Figure1_RP_ridge_plots_corrected_labels_new_annotation.ai".
 The script "Figure3_create_raincloudplot.R" recreates Panel B of Figure 3, the raincloud plots of the vmPFC-PMI z-scores for each group individually.
-The file "Figure3_Illustrator_File.ai" is a project-file for Adobe Illustrator used to create Figure 4 with panels A and B. Please note that Adobe Illustrator, a commercial software, is needed in order to view and edit this file. The file "FigureS1_CONSORT_diagram.pptx" recreates the CONSORT diagram of the study (Figure S1 in the Supplement).
+The files "Figure1_RP_ridge_plots_corrected_labels_new_annotation.ai" and "Figure3_Illustrator_File.ai" are project-files for Adobe Illustrator used to create Figure 3 with panels A and B and Figure 1 with the updated annotations. Please note that Adobe Illustrator, a commercial software, is needed in order to view and edit this file. 
+The file "FigureS1_CONSORT_diagram.pptx" recreates the CONSORT diagram of the study (Figure S1 in the Supplement).

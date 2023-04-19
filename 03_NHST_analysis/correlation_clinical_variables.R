@@ -21,7 +21,9 @@ df.correlations$cor_z <- FisherZ(df.correlations$cor_r)
 # build new dataframe with results z-score of vmPFC-PMI connectivity and scores on clinical questionnaires
 df.clinical <- df.correlations %>%
   filter(roi_1 == "vmPFC" & roi_2 == "pm_ins") %>% 
-  inner_join(df.demographics, by = "ID")
+  inner_join(df.demographics, by = "ID") %>% 
+  rename(Group = Group.x) %>% 
+  select(-Group.y)
 
 
 ### correlations between vmPFC-PMI connectivity and clinical questionnaires are exploratory ###
@@ -149,7 +151,7 @@ clinical.cor.GAD[clinical.cor.GAD$questionnaire == "OASIS", "BF"] <- df.clinical
 clinical.cor.GAD <- 
   clinical.cor.GAD %>% 
   relocate(BF, .after = p.value) %>% 
-  relocate(questionnaire, .before = pearson_r)
+  relocate(questionnaire, .before = pearson_r) %>% 
   arrange(-row_number())
 
 clinical.cor.GAD
@@ -276,7 +278,7 @@ clinical.cor.HC[clinical.cor.HC$questionnaire == "OASIS", "BF"] <- df.clinical %
 clinical.cor.HC <- 
   clinical.cor.HC %>% 
   relocate(BF, .after = p.value) %>% 
-  relocate(questionnaire, .before = pearson_r)
+  relocate(questionnaire, .before = pearson_r) %>% 
   arrange(-row_number())
 
 clinical.cor.HC
