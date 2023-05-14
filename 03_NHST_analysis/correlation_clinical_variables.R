@@ -138,6 +138,7 @@ clinical.cor.GAD <-
          t_value = statistic,
          df = parameter) %>% 
   bind_rows(clinical.cor.GAD)
+  
 
 # calculate Bayes Factor
 clinical.cor.GAD[clinical.cor.GAD$questionnaire == "OASIS", "BF"] <- df.clinical %>%
@@ -146,12 +147,18 @@ clinical.cor.GAD[clinical.cor.GAD$questionnaire == "OASIS", "BF"] <- df.clinical
   extractBF() %>% 
   {.$bf}
 
-# reorder to match order in manuscript
+# correct for multiplicity using the Bonferroni-method
+clinical.cor.GAD <- 
+  clinical.cor.GAD %>% 
+  mutate(p.value.adj = p.adjust(.$p.value, method = "bonferroni"))
 
+
+# reorder to match order in manuscript
 clinical.cor.GAD <- 
   clinical.cor.GAD %>% 
   relocate(BF, .after = p.value) %>% 
   relocate(questionnaire, .before = pearson_r) %>% 
+  relocate(p.value.adj, .after = p.value) %>% 
   arrange(-row_number())
 
 clinical.cor.GAD
@@ -273,12 +280,17 @@ clinical.cor.HC[clinical.cor.HC$questionnaire == "OASIS", "BF"] <- df.clinical %
   extractBF() %>% 
   {.$bf}
 
-# reorder to match order in manuscript
+# correct for multiplicity using the Bonferroni-method
+clinical.cor.HC <- 
+  clinical.cor.HC %>% 
+  mutate(p.value.adj = p.adjust(.$p.value, method = "bonferroni"))
 
+# reorder to match order in manuscript
 clinical.cor.HC <- 
   clinical.cor.HC %>% 
   relocate(BF, .after = p.value) %>% 
   relocate(questionnaire, .before = pearson_r) %>% 
+  relocate(p.value.adj, .after = p.value) %>% 
   arrange(-row_number())
 
 clinical.cor.HC
