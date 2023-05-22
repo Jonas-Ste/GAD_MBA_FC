@@ -1,4 +1,4 @@
-# Analysis Scripts and Data for Steinhäuser et al. "Reduced vmPFC to insula functional connectivity in generalized anxiety disorder: a Bayesian confirmation study"
+# Analysis Scripts and Data for Steinhäuser et al. "Reduced vmPFC-insula functional connectivity in generalized anxiety disorder: a Bayesian confirmation study"
 Jonas L. Steinhäuser, Adam R. Teed, Obada Al-Zoubi, René Hurlemann, Gang Chen, Sahib S. Khalsa
 
 These datafiles and scripts reproduce the results reported in the main manuscript.
